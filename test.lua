@@ -30,12 +30,22 @@ end
 -- ads1015 module
 -- ============================================================================
 
-it('read_adc() works', function()
+it('readSingleValue() works', function()
   local i2c = periphery.I2C('/dev/i2c-1')
   local device = 0x48
   local channel = 0
   local gain = 1
   local dataRate = nil
-  local value = ads1015.read_adc(i2c, device, channel, gain, dataRate)
-  print('** value', value)
+  local value = ads1015.readSingleValue(i2c, device, channel, gain, dataRate)
+end)
+
+it('readContinuous() works', function()
+  local i2c = periphery.I2C('/dev/i2c-1')
+  local device = 0x48
+  local channel = 0
+  local gain = 1
+  local dataRate = nil
+  local value = ads1015.startContinuous(i2c, device, channel, gain, dataRate)
+  value = ads1015.readContinuousValue(i2c, device)
+  ads1015.stopContinuous(i2c, device)
 end)

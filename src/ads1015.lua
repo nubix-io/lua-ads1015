@@ -16,8 +16,8 @@ end
 
 local M = {
   Config = {
-    CompActiveHigh   = 0x0008,
-    CompLatching     = 0x0004,
+    CompActiveHigh = 0x0008,
+    CompLatching   = 0x0004,
     CompQue = {
       [1] = 0x0000,
       [2] = 0x0001,
@@ -88,14 +88,31 @@ function M.read(i2c, device, mux, gain, dataRate, mode)
   socket.sleep(1 / dataRate + 0.0001)
   
   -- retrieve the result
-  local msgs = {{M.MemoryMap.Conversion}, {0,0, flags=I2C.I2C_M_RD}}
-  i2c:transfer(device, msgs)
-  local low, high = msgs[2][2], msgs[2][1]
+  local req, res = {M.MemoryMap.Conversion}, {0,0, flags=I2C.I2C_M_RD}
+  i2c:transfer(device, {req, res})
+  local low, high = res[2], res[1]
   return conversionValue(low, high)
 end
 
-function M.readValue(i2c, device, channel, gain, dataRate)
+function M.readContinuousValue(i2c, device)
+  local req, res = {M.MemoryMap.Conversion}, {0,0, flags=I2C.I2C_M_RD}
+  i2c:transfer(device, {req, res})
+  local low, high = res[2], res[1]
+  return conversionValue(low, high)
+end
+
+function M.readSingleValue(i2c, device, channel, gain, dataRate)
   return M.read(i2c, device, channel + 0x04, gain, dataRate, M.Config.Mode.Single)
+end
+
+function M.startContinuous(i2c, device, channel, gain, dataRate)
+  return M.read(i2c, device, channel + 0x04, gain, dataRate, M.Config.Mode.Continuous)
+end
+
+function M.stopContinuous(i2c, device)
+  local config = 0x8583
+  local req = {M.MemoryMap.Config, bit32.band(bit32.rshift(config,8), 0xff), bit32.band(config, 0xff)}
+  i2c:transfer(device, {req})
 end
 
 function M.toVoltage(value, gain)
