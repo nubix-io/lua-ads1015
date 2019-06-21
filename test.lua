@@ -30,5 +30,12 @@ end
 -- ads1015 module
 -- ============================================================================
 
---it('TODO', function()
---end)
+it('read_adc() works', function()
+  local i2c = periphery.I2C('/dev/i2c-1')
+  local device = 0x48
+  local channel = 0
+  local gain = 1
+  local dataRate = nil
+  local value = ads1015.read_adc(i2c, device, channel, gain, dataRate)
+  print('** value', value)
+end)
