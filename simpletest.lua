@@ -36,13 +36,13 @@ while true do
     for channel = 0, 3 do
     
       -- Read the specified ADC channel using the previously set gain value
-      values[#values+1] = ads1015.read_adc(i2c, address, channel, gain)
+      values[#values+1] = ads1015.readSingleValue(i2c, address, channel, gain)
       
       -- Note you can also pass in an optional data_rate parameter that controls
       -- the ADC conversion time (in samples/second). Each chip has a different
       -- set of allowed data rate values, see datasheet Table 9 config register
       -- DR bit values.
-      --values[channel+1] = ads1015.read_adc(i2c, address, channel, gain, 128)
+      --values[channel+1] = ads1015.readSingleValue(i2c, address, channel, gain, 128)
       -- Each value will be a 12 bit signed integer value.
     end
   

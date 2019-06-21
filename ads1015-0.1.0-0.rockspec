@@ -8,7 +8,7 @@ description = {
    summary = "ADS1015 4-channel 12-bit ADC+PGA I²C sensor driver",
    detailed = [[
      The ADS1015 device is a precision, low-power, 12-bit, I²C-compatible,
-     analog-to-digital converters (ADC) offered in an ultra-small, leadless,
+     analog-to-digital converter (ADC) offered in an ultra-small, leadless,
      X2QFN-10 package, and a VSSOP-10 package. The ADS1015 incorporates a
      low-drift voltage reference and an oscillator. The ADS1015 also incorporates
      a programmable gain amplifier (PGA) and a digital comparator. These features,
