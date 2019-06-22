@@ -1,8 +1,8 @@
 package = "ads1015"
-version = "0.1.0-1"
+version = "0.1.0-2"
 source = {
-   url = "https://github.com/BixData/lua-ads1015/archive/0.1.0-1.tar.gz",
-   dir = "ads1015-0.1.0-1"
+   url = "https://github.com/BixData/lua-ads1015/archive/0.1.0-2.tar.gz",
+   dir = "lua-ads1015-0.1.0-2"
 }
 description = {
    summary = "ADS1015 4-channel 12-bit ADC+PGA I²C sensor driver",
