@@ -48,24 +48,24 @@ local periphery = require 'periphery'
 local socket = require 'socket'
 
 local i2c = periphery.I2C('/dev/i2c-1')
+local device = ads1015.DefaultAddress
+local gain = 1
 local dataRate = 1600
 local value = ads1015.startContinuous(i2c, device, channel, gain, dataRate)
 local values = {value}
-local startTime = socket.gettime()
-local count = 0
+local count, startTime = 0, socket.gettime()
 while true do
   value = ads1015.readContinuousValue(i2c, device)
-  count = count + 1
   values[#values+1] = string.format('%5.4f', ads1015.toVoltage(value, gain))
   if #values >= 16 then
     print(table.concat(values, ' '))
     values = {}
   end
+  count = count + 1
   local elapsed = socket.gettime() - startTime
   if elapsed >= 1 then
     print(string.format('%d samples/sec', count))
-    startTime = socket.gettime()
-    count = 0
+    count, startTime = 0, socket.gettime()
   end
 end
 ads1015.stopContinuous(i2c, device)
