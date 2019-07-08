@@ -1,7 +1,7 @@
 package = "ads1015"
 version = "0.1.0-2"
 source = {
-   url = "https://github.com/BixData/lua-ads1015/archive/0.1.0-2.tar.gz",
+   url = "https://github.com/nubix-io/lua-ads1015/archive/0.1.0-2.tar.gz",
    dir = "lua-ads1015-0.1.0-2"
 }
 description = {
@@ -15,7 +15,7 @@ description = {
      along with a wide operating supply range, make the ADS1015 well suited for
      power- and space-constrained sensor measurement applications. 
    ]],
-   homepage = "https://github.com/BixData/lua-ads1015",
+   homepage = "https://github.com/nubix-io/lua-ads1015",
    maintainer = "David Rauschenbach",
    license = "MIT"
 }

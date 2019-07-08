@@ -12,7 +12,7 @@ If you are on Linux:
 $ luarocks install ads1015
 ```
 
-Otherwise, you can use the Lua module from within a Go app via [glua-periphery](https://github.com/BixData/gluaperiphery).
+Otherwise, you can use the Lua module from within a Go app via [glua-periphery](https://github.com/nubix-io/gluaperiphery).
 
 ## Using
 
