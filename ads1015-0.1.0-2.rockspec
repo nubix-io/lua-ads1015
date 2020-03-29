@@ -13,10 +13,10 @@ description = {
      low-drift voltage reference and an oscillator. The ADS1015 also incorporates
      a programmable gain amplifier (PGA) and a digital comparator. These features,
      along with a wide operating supply range, make the ADS1015 well suited for
-     power- and space-constrained sensor measurement applications. 
+     power- and space-constrained sensor measurement applications.
    ]],
    homepage = "https://github.com/nubix-io/lua-ads1015",
-   maintainer = "David Rauschenbach",
+   maintainer = "Nubix Inc.",
    license = "MIT"
 }
 dependencies = {
